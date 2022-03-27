@@ -7,8 +7,10 @@ use crate::core::Context;
 fn main() {
     let matches = command::build().get_matches_from(wild::args_os());
 
-    // match matches.occurrences_of(id: T)
-    let context = Context{ is_file: false, quiet_mode: false };
+    let context = Context{
+        is_string: matches.is_present("string"),
+        quiet_mode: matches.is_present("quiet"),
+    };
 
-    Core::new(context, String::new()).checksum().format();
+    Core::new(context, matches.value_of("INPUT").unwrap().to_string()).checksum().format();
 }
