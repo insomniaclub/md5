@@ -4,6 +4,7 @@ mod core;
 use crate::core::Core;
 use crate::core::Context;
 
+// main
 fn main() {
     let matches = command::build().get_matches_from(wild::args_os());
 
